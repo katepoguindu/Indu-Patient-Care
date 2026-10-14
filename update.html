@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Patient | Indu Patient Care</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .update-patient-layout {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 28px;
+            align-items: center;
+            max-width: 1150px;
+            margin: 30px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .update-patient-image {
+            padding: 20px;
+            background: #f1f7f5;
+            border-radius: 18px;
+            box-sizing: border-box;
+        }
+
+        .update-patient-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            border-radius: 13px;
+        }
+
+        .update-patient-image h2 {
+            color: #174b45;
+            font-size: 25px;
+            margin: 18px 0 8px;
+        }
+
+        .update-patient-image p {
+            color: #526b65;
+            line-height: 1.7;
+            margin-bottom: 5px;
+        }
+
+        .update-patient-layout .form-container {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        /* Indu Patient Care branding */
+        .logo {
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 11px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-top: 3px;
+        }
+
+        /* In-page success/error messages */
+        .status-message {
+            display: none;
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            box-sizing: border-box;
+            animation: messageAppear 0.35s ease;
+        }
+
+        .status-message.success {
+            display: block;
+            background: #e8f8ef;
+            color: #176b45;
+            border: 1px solid #a7e5bd;
+        }
+
+        .status-message.error {
+            display: block;
+            background: #fff0f0;
+            color: #b42318;
+            border: 1px solid #ffcaca;
+        }
+
+        @keyframes messageAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 760px) {
+            .update-patient-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-top: 20px;
+            }
+
+            .update-patient-image img {
+                height: 230px;
+            }
+
+            .update-patient-image h2 {
+                font-size: 22px;
+            }
+
+            .status-message {
+                margin: 16px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        ✚ Indu Patient Care
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="insert.html">Add Patient</a>
+        <a href="list.html">View Patients</a>
+        <a href="update.html">Update</a>
+        <a href="delete.html">Delete</a>
+    </nav>
+</header>
+
+<section class="page-heading">
+    <p class="eyebrow">INDU PATIENT CARE · RECORD MANAGEMENT</p>
+    <h1 class="page-title">Update Patient Details</h1>
+    <p>Enter a Patient ID and update the required information.</p>
+</section>
+
+<!-- Message appears here without a popup -->
+<div id="statusMessage"
+     class="status-message"
+     role="status"
+     aria-live="polite"></div>
+
+<div class="update-patient-layout">
+
+    <div class="update-patient-image">
+        <img src="images/update-patient.jpg"
+             alt="Healthcare professional updating patient records">
+
+        <h2>Keep Patient Records Updated</h2>
+        <p>
+            Maintain accurate patient information by updating personal
+            details and health records whenever necessary.
+        </p>
+    </div>
+
+    <div class="form-container">
+        <form id="updatePatientForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="patient_id">Patient ID</label>
+                    <input type="number" id="patient_id" name="patient_id"
+                           min="1" placeholder="Enter Patient ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Patient Name</label>
+                    <input type="text" id="name" name="name"
+                           placeholder="Enter full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="patient@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone"
+                           pattern="[0-9]{10}" maxlength="10"
+                           placeholder="10-digit phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age"
+                           min="0" max="120"
+                           placeholder="Enter age" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="problem">Health Problem</label>
+                    <input type="text" id="problem" name="problem"
+                           placeholder="Enter health problem" required>
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="action-btn">
+                    Update Patient
+                </button>
+
+                <button type="reset" class="action-btn">
+                    Clear Form
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+<footer class="patient-footer">
+    <p><strong>Indu Patient Care</strong></p>
+    <p>Your Health, Our Priority</p>
+    <small>© 2026 Indu Patient Care | Care Begins Here</small>
+</footer>
+
+<script>
+const updateForm = document.getElementById("updatePatientForm");
+const statusMessage = document.getElementById("statusMessage");
+
+updateForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    statusMessage.className = "status-message";
+    statusMessage.textContent = "";
+
+    const patientId = document.getElementById("patient_id").value;
+
+    const patient = {
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        gender: document.getElementById("gender").value,
+        age: document.getElementById("age").value,
+        problem: document.getElementById("problem").value.trim()
+    };
+
+    try {
+        const response = await fetch("/update", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                patient_id: patientId,
+                ...patient
+            })
+        });
+
+        const message = await response.text();
+
+        if (!response.ok) {
+            throw new Error(message || "Unable to update patient.");
+        }
+
+        statusMessage.textContent =
+            "✓ Patient Updated Successfully!";
+        statusMessage.className = "status-message success";
+
+    } catch (error) {
+        statusMessage.textContent =
+            "✕ " + (error.message || "Unable to update patient. Please try again.");
+        statusMessage.className = "status-message error";
+    }
+});
+</script>
+
+</body>
+</html>

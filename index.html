@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indu Patient Care | Patient Management</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .hospital-gallery {
+            padding: 65px 7%;
+            background: #F6F1E7;
+        }
+
+        .gallery-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .gallery-heading .eyebrow {
+            margin-bottom: 10px;
+        }
+
+        .gallery-heading h2 {
+            font-family: 'Playfair Display', serif;
+            color: #123D35;
+            font-size: clamp(28px, 4vw, 40px);
+            margin-bottom: 10px;
+        }
+
+        .gallery-heading p {
+            color: #6F7E77;
+        }
+
+        .hospital-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .hospital-card {
+            background: #FFFFFF;
+            border-radius: 9px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px #123D3510;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hospital-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px #123D3520;
+        }
+
+        .hospital-card img {
+            width: 100%;
+            height: 220px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .hospital-card-content {
+            padding: 22px;
+        }
+
+        .hospital-card h3 {
+            color: #123D35;
+            font-family: 'Playfair Display', serif;
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .hospital-card p {
+            color: #6F7E77;
+            font-size: 14px;
+        }
+
+        .gallery-link {
+            display: inline-block;
+            margin-top: 14px;
+            color: #8B6B36;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+            .hospital-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+            .hospital-gallery {
+                padding: 40px 6%;
+            }
+
+            .hospital-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hospital-card img {
+                height: 230px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">✚ Indu Patient Care</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="insert.html">Add Patient</a>
+        <a href="list.html">View Patients</a>
+        <a href="update.html">Update</a>
+        <a href="delete.html">Delete</a>
+    </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-content">
+        <p class="eyebrow">COMPASSION • CARE • COMMITMENT</p>
+
+        <h1>
+            Better Care.<br>
+            <span>Better Health.</span>
+        </h1>
+
+        <p class="description">
+            A smarter way to manage patient information.
+            Access patient records and manage details in one place.
+        </p>
+
+        <div class="hero-buttons">
+            <a class="btn primary" href="insert.html">
+                + Add New Patient
+            </a>
+
+            <a class="btn secondary" href="list.html">
+                View All Patients →
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img
+            src="images/hospital.jpg"
+            alt="Modern hospital building"
+        >
+
+        <div class="image-label">
+            <span>✚</span>
+            <div>
+                <strong>Patient First</strong>
+                <p>Care with confidence</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="features">
+
+    <div class="feature-card">
+        <span>＋</span>
+        <h3>Add Patients</h3>
+        <p>Register new patient details easily.</p>
+        <a href="insert.html">Register patient →</a>
+    </div>
+
+    <div class="feature-card">
+        <span>▤</span>
+        <h3>Patient Records</h3>
+        <p>View and manage patient information.</p>
+        <a href="list.html">View records →</a>
+    </div>
+
+    <div class="feature-card">
+        <span>↻</span>
+        <h3>Update Details</h3>
+        <p>Keep patient information up to date.</p>
+        <a href="update.html">Update details →</a>
+    </div>
+
+    <div class="feature-card">
+        <span>♡</span>
+        <h3>Patient Care</h3>
+        <p>Organize essential patient information.</p>
+        <a href="list.html">Explore records →</a>
+    </div>
+
+</section>
+
+<!-- HOSPITAL IMAGES SECTION -->
+<section class="hospital-gallery">
+
+    <div class="gallery-heading">
+        <p class="eyebrow">OUR CARE • OUR COMMITMENT</p>
+        <h2>A Better Healthcare Experience</h2>
+        <p>
+            Explore our facilities and the people dedicated to patient care.
+        </p>
+    </div>
+
+    <div class="hospital-grid">
+
+        <article class="hospital-card">
+            <img
+                src="images/reception.jpg"
+                alt="Hospital reception"
+                loading="lazy"
+            >
+            <div class="hospital-card-content">
+                <h3>Welcoming Reception</h3>
+                <p>
+                    A welcoming environment for patients and visitors.
+                </p>
+            </div>
+        </article>
+
+        <article class="hospital-card">
+            <img
+                src="images/doctor.jpg"
+                alt="Doctor and medical services"
+                loading="lazy"
+            >
+            <div class="hospital-card-content">
+                <h3>Expert Medical Care</h3>
+                <p>
+                    Supporting patient care through medical expertise.
+                </p>
+            </div>
+        </article>
+
+        <article class="hospital-card">
+            <img
+                src="images/consultation.jpg"
+                alt="Doctor consulting a patient"
+                loading="lazy"
+            >
+            <div class="hospital-card-content">
+                <h3>Patient Consultation</h3>
+                <p>
+                    Helping patients receive the attention they need.
+                </p>
+            </div>
+        </article>
+
+        <article class="hospital-card">
+            <img
+                src="images/laboratory.jpg"
+                alt="Hospital diagnostic laboratory"
+                loading="lazy"
+            >
+            <div class="hospital-card-content">
+                <h3>Diagnostic Facilities</h3>
+                <p>
+                    Supporting healthcare with diagnostic services.
+                </p>
+            </div>
+        </article>
+
+        <article class="hospital-card">
+            <img
+                src="images/team.jpg"
+                alt="Hospital medical team"
+                loading="lazy"
+            >
+            <div class="hospital-card-content">
+                <h3>Our Medical Team</h3>
+                <p>
+                    Healthcare professionals working together for patients.
+                </p>
+            </div>
+        </article>
+
+        <article class="hospital-card">
+            <img
+                src="images/patient-care.jpg"
+                alt="Patient receiving care"
+                loading="lazy"
+            >
+            <div class="hospital-card-content">
+                <h3>Compassionate Patient Care</h3>
+                <p>
+                    Keeping patient comfort and care at the center.
+                </p>
+                <a class="gallery-link" href="list.html">
+                    Manage Patient Records →
+                </a>
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 PatientCare Management System | Care Begins Here</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Patient | Indu Patient Care</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .delete-patient-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .delete-patient-image {
+            padding: 22px;
+            background: #fff3f1;
+            border-radius: 18px;
+            box-sizing: border-box;
+        }
+
+        .delete-patient-image img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            border-radius: 13px;
+        }
+
+        .delete-patient-image h2 {
+            color: #8b302c;
+            font-size: 25px;
+            margin: 18px 0 8px;
+        }
+
+        .delete-patient-image p {
+            color: #66504e;
+            line-height: 1.7;
+        }
+
+        .delete-patient-form {
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
+        }
+
+        .delete-patient-form h1 {
+            margin-top: 0;
+            color: #8b302c;
+        }
+
+        .delete-patient-form p {
+            line-height: 1.6;
+        }
+
+        .delete-patient-form label {
+            display: block;
+            margin: 20px 0 8px;
+            font-weight: 600;
+        }
+
+        .delete-patient-form input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d7d7d7;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        .delete-patient-form input:focus {
+            outline: none;
+            border-color: #a43b36;
+            box-shadow: 0 0 0 3px rgba(164, 59, 54, 0.12);
+        }
+
+        .delete-patient-form button {
+            margin-top: 20px;
+            padding: 12px 22px;
+            background: #a43b36;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .delete-patient-form button:hover {
+            background: #812b27;
+        }
+
+        .delete-links {
+            margin-top: 22px;
+        }
+
+        .delete-links a {
+            display: inline-block;
+            margin: 6px 12px 6px 0;
+            color: #174b45;
+            text-decoration: none;
+        }
+
+        .delete-links a:hover {
+            text-decoration: underline;
+        }
+
+        .delete-warning {
+            margin-top: 18px;
+            padding: 12px;
+            background: #fff0ed;
+            color: #8b302c;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .status-message {
+            display: none;
+            margin: 18px 0;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+            animation: messageAppear 0.35s ease;
+        }
+
+        .status-message.success {
+            display: block;
+            color: #176b45;
+            background: #e8f8ef;
+            border: 1px solid #a7e5bd;
+        }
+
+        .status-message.error {
+            display: block;
+            color: #b42318;
+            background: #fff0f0;
+            border: 1px solid #ffcaca;
+        }
+
+   
+        @keyframes messageAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .patient-footer {
+            margin-top: 40px;
+            padding: 22px;
+            background: #123f3a;
+            color: white;
+            text-align: center;
+        }
+
+        .patient-footer strong {
+            color: #f4d58d;
+        }
+
+        @media (max-width: 760px) {
+            .delete-patient-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin: 25px auto;
+            }
+
+            .delete-patient-image img {
+                height: 230px;
+            }
+
+            .delete-patient-image h2 {
+                font-size: 22px;
+            }
+
+            .delete-patient-form {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <h2 class="logo">✚ Indu Patient Care</h2>
+
+    <nav>
+        <a href="/index.html">Home</a>
+        <a href="/insert.html">Add Patient</a>
+        <a href="/list.html">View Patients</a>
+        <a href="/update.html">Update</a>
+        <a href="/delete.html">Delete</a>
+    </nav>
+</header>
+
+<section class="page-heading">
+    <p class="eyebrow">INDU PATIENT CARE · RECORD MANAGEMENT</p>
+    <h1 class="page-title">Delete Patient Record</h1>
+    <p>Verify the Patient ID before removing a record.</p>
+</section>
+
+<div class="delete-patient-layout">
+
+    <div class="delete-patient-image">
+        <img src="images/delete-patient.jpg"
+             alt="Patient record management in a healthcare setting">
+
+        <h2>Manage Records Carefully</h2>
+
+        <p>
+            Keep patient records organised. Before deleting a record,
+            make sure you have entered the correct Patient ID.
+        </p>
+    </div>
+
+    <section class="delete-patient-form">
+
+        <h1>Delete Patient</h1>
+
+        <p>Enter the Patient ID to remove the patient's record.</p>
+
+        <form id="deletePatientForm">
+
+            <label for="patient_id">Patient ID</label>
+
+            <input
+                type="number"
+                id="patient_id"
+                name="patient_id"
+                placeholder="Enter Patient ID"
+                min="1"
+                required
+            >
+
+            <button type="submit">Delete Patient</button>
+
+        </form>
+
+        <div id="statusMessage"
+             class="status-message"
+             role="status"
+             aria-live="polite"></div>
+             
+<div id="deleteConfirm" class="delete-confirm" style="display: none;">
+    <p>⚠️ Are you sure you want to delete this patient record?</p>
+    <div class="confirm-buttons">
+        <button type="button" id="confirmDeleteBtn">Yes, Delete</button>
+        <button type="button" id="cancelDeleteBtn">Cancel</button>
+    </div>
+</div>
+
+
+        <div class="delete-warning">
+            ⚠️ Please verify the Patient ID before deleting.
+            This action may permanently remove the record.
+        </div>
+
+        <div class="delete-links">
+            <a href="list.html">View Patient Records</a>
+            <a href="index.html">Back to Home</a>
+        </div>
+
+    </section>
+
+</div>
+
+<footer class="patient-footer">
+    <p><strong>Indu Patient Care</strong></p>
+    <p>Your Health, Our Priority</p>
+    <small>© 2026 Indu Patient Care | Care Begins Here</small>
+</footer>
+
+<script>
+const deleteForm = document.getElementById("deletePatientForm");
+const statusMessage = document.getElementById("statusMessage");
+const deleteConfirm = document.getElementById("deleteConfirm");
+const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+
+let patientIdToDelete = "";
+
+deleteForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const patientId = document.getElementById("patient_id").value.trim();
+
+    if (!patientId || !Number.isInteger(Number(patientId)) ||
+        Number(patientId) < 1) {
+        showMessage("Please enter a valid Patient ID.", "error");
+        return;
+    }
+
+    statusMessage.className = "status-message";
+    statusMessage.textContent = "";
+
+    patientIdToDelete = patientId;
+    deleteConfirm.style.display = "block";
+});
+
+confirmDeleteBtn.addEventListener("click", async function() {
+    if (!patientIdToDelete) return;
+
+    confirmDeleteBtn.disabled = true;
+    confirmDeleteBtn.textContent = "Deleting...";
+
+    try {
+        const response = await fetch("/delete", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                patient_id: patientIdToDelete
+            })
+        });
+
+        const message = await response.text();
+
+        if (!response.ok) {
+            throw new Error(message || "Unable to delete patient.");
+        }
+
+        deleteConfirm.style.display = "none";
+        showMessage("✓ Patient Deleted Successfully!", "success");
+        deleteForm.reset();
+        patientIdToDelete = "";
+
+    } catch (error) {
+        deleteConfirm.style.display = "none";
+        showMessage(
+            "✕ " + (error.message || "Unable to delete patient. Please try again."),
+            "error"
+        );
+        patientIdToDelete = "";
+
+    } finally {
+        confirmDeleteBtn.disabled = false;
+        confirmDeleteBtn.textContent = "Yes, Delete";
+    }
+});
+
+cancelDeleteBtn.addEventListener("click", function() {
+    deleteConfirm.style.display = "none";
+    patientIdToDelete = "";
+});
+
+function showMessage(message, type) {
+    statusMessage.textContent = message;
+    statusMessage.className = "status-message " + type;
+}
+</script>
+
+
+</body>
+</html>

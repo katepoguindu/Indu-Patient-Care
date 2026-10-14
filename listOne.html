@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Patient | PatientCare</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <h2 class="logo">✚ PatientCare</h2>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/insert.html">Add Patient</a>
+            <a href="/list.html">View Patients</a>
+            <a href="/update.html">Update</a>
+            <a href="/delete.html">Delete</a>
+            <a href="/listOne.html">Search Patient</a>
+        </nav>
+    </header>
+
+    <section class="form-container">
+        <h1>Search Patient</h1>
+        <p>Enter a Patient ID to view individual patient details.</p>
+
+        <form id="searchForm">
+            <label for="patient_id">Patient ID</label>
+            <input
+                type="number"
+                id="patient_id"
+                min="1"
+                placeholder="Enter Patient ID"
+                required
+            >
+            <button type="submit">Search Patient</button>
+        </form>
+
+        <div id="result" style="margin-top: 25px;"></div>
+
+        <p><a href="/list.html">View All Patients</a></p>
+        <p><a href="/">Back to Home</a></p>
+    </section>
+
+    <script>
+        const form = document.getElementById("searchForm");
+        const result = document.getElementById("result");
+
+        form.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const id = document.getElementById("patient_id").value;
+            result.textContent = "Searching...";
+
+            try {
+                const response = await fetch("/patients/" + encodeURIComponent(id));
+                const data = await response.json();
+
+                if (!response.ok) {
+                    result.textContent = data.message || "Patient not found.";
+                    return;
+                }
+
+                result.innerHTML = `
+                    <h2 style="color: #123D35; margin-bottom: 15px;">
+                        Patient Details
+                    </h2>
+                    <p><strong>Patient ID:</strong> ${data.patient_id}</p>
+                    <p><strong>Name:</strong> ${escapeHTML(data.name)}</p>
+                    <p><strong>Email:</strong> ${escapeHTML(data.email)}</p>
+                    <p><strong>Phone:</strong> ${escapeHTML(data.phone)}</p>
+                    <p><strong>Gender:</strong> ${escapeHTML(data.gender)}</p>
+                    <p><strong>Age:</strong> ${data.age}</p>
+                    <p><strong>Problem:</strong> ${escapeHTML(data.problem)}</p>
+                `;
+            } catch (error) {
+                result.textContent = "Unable to fetch patient details. Please try again.";
+            }
+        });
+
+        function escapeHTML(value) {
+            const element = document.createElement("span");
+            element.textContent = value ?? "";
+            return element.innerHTML;
+        }
+    </script>
+
+</body>
+</html>

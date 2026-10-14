@@ -1,0 +1,683 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+    --green: #123D35;
+    --green-light: #245A4E;
+    --ivory: #F6F1E7;
+    --gold: #C6A66B;
+    --sage: #DCE8DF;
+    --white: #FFFFFF;
+    --text: #253A34;
+    --muted: #6F7E77;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--ivory);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* NAVBAR */
+.navbar {
+    min-height: 82px;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: var(--green);
+    color: var(--white);
+    border-bottom: 2px solid var(--gold);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.logo:first-letter {
+    color: var(--gold);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+}
+
+nav a {
+    color: #E9EDE8;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+/* HOME HERO */
+.hero {
+    padding: 75px 7%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+    align-items: center;
+    min-height: 520px;
+}
+
+.hero-content {
+    animation: slideUp 0.8s ease both;
+}
+
+.eyebrow {
+    color: #8B6B36;
+    letter-spacing: 3px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--green);
+    font-size: clamp(42px, 5vw, 68px);
+    line-height: 1.12;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #A47D3F;
+    font-style: italic;
+}
+
+.description {
+    max-width: 470px;
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 21px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.primary {
+    background: var(--green);
+    color: var(--white);
+}
+
+.primary:hover {
+    background: var(--green-light);
+}
+
+.secondary {
+    border: 1px solid var(--green);
+    color: var(--green);
+}
+
+.secondary:hover {
+    background: var(--sage);
+}
+
+.hero-image {
+    position: relative;
+    animation: fadeIn 1.2s ease both;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 16px 16px 0 var(--sage);
+}
+
+.image-label {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    background: var(--white);
+    padding: 16px 22px;
+    border-left: 4px solid var(--gold);
+    box-shadow: 0 8px 25px #123D3518;
+}
+
+.image-label span {
+    font-size: 28px;
+    color: var(--green);
+}
+
+.image-label strong {
+    color: var(--green);
+}
+
+.image-label p {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* FEATURE CARDS */
+.features {
+    padding: 65px 7%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: #EAE9DC;
+}
+
+.feature-card {
+    padding: 28px 22px;
+    background: var(--white);
+    border-radius: 7px;
+    border-bottom: 3px solid transparent;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--gold);
+    box-shadow: 0 12px 30px #123D3510;
+}
+
+.feature-card > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--sage);
+    color: var(--green);
+    border-radius: 50%;
+    font-size: 26px;
+    margin-bottom: 18px;
+}
+
+.feature-card h3 {
+    color: var(--green);
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 9px;
+}
+
+.feature-card p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.feature-card a {
+    color: #8B6B36;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* FOOTER */
+footer {
+    background: var(--green);
+    color: #E9EDE8;
+    text-align: center;
+    padding: 25px 15px;
+    font-size: 13px;
+    border-top: 2px solid var(--gold);
+}
+
+/* FORM CONTAINER */
+.form-container {
+    width: min(750px, 90%);
+    margin: 55px auto;
+    padding: 35px;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 10px 35px #123D3510;
+    animation: slideUp 0.6s ease both;
+}
+
+.form-container h1,
+.page-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--green);
+    margin-bottom: 20px;
+}
+
+.form-container > p {
+    margin: 12px 0;
+    color: var(--muted);
+}
+
+.form-container form {
+    margin-top: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label,
+.form-container form > label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea,
+.form-container form > input,
+.form-container form > select,
+.form-container form > textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #D6DDD6;
+    border-radius: 5px;
+    font: inherit;
+    outline: none;
+    background: #FCFCF9;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus,
+.form-container form > input:focus,
+.form-container form > select:focus,
+.form-container form > textarea:focus {
+    border-color: var(--green-light);
+    box-shadow: 0 0 0 3px var(--sage);
+}
+
+.form-actions {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.action-btn,
+.form-container button {
+    display: inline-block;
+    padding: 12px 20px;
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    background: var(--green);
+    color: var(--white);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.action-btn:hover,
+.form-container button:hover {
+    background: var(--green-light);
+    transform: translateY(-2px);
+}
+
+.form-container a {
+    color: var(--green);
+    font-weight: 600;
+}
+
+.form-container a:hover {
+    color: #A47D3F;
+}
+
+/* PATIENT TABLE */
+.table-container {
+    width: 90%;
+    margin: 45px auto;
+    overflow-x: auto;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 8px 25px #123D3510;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 750px;
+}
+
+th {
+    background: var(--green);
+    color: var(--white);
+    padding: 15px;
+    text-align: left;
+    font-size: 13px;
+}
+
+td {
+    padding: 13px 15px;
+    border-bottom: 1px solid #E7EAE4;
+    font-size: 13px;
+}
+
+tr:hover td {
+    background: #F2F6F0;
+}
+
+.page-heading {
+    text-align: center;
+    padding: 45px 15px 10px;
+}
+
+.page-heading h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--green);
+    margin-bottom: 10px;
+}
+
+.page-heading p {
+    color: var(--muted);
+}
+
+/* ANIMATIONS */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 950px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-image {
+        margin: 0 10px 15px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 45px 6%;
+    }
+
+    .hero-image img {
+        height: 250px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        padding: 40px 6%;
+    }
+
+    .form-container {
+        margin: 25px auto;
+        padding: 22px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .table-container {
+        width: 95%;
+        margin: 25px auto;
+    }
+}
+
+/* View Patients Image Banner */
+.patient-list-banner {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+    gap: 28px;
+    max-width: 1150px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #f4f8f7;
+    border-radius: 18px;
+    box-sizing: border-box;
+}
+
+.patient-list-banner img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px;
+    display: block;
+}
+
+.patient-list-banner-text h2 {
+    color: #174b45;
+    margin: 10px 0;
+    font-size: 28px;
+}
+
+.patient-list-banner-text p {
+    line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+    .patient-list-banner {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .patient-list-banner img {
+        height: 220px;
+    }
+}
+
+/* Shared layout for Add, Update and Delete pages */
+
+.patient-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 28px;
+    align-items: center;
+    max-width: 1150px;
+    margin: 30px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.patient-image {
+    padding: 20px;
+    border-radius: 18px;
+    background: #f3f7f5;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.patient-image img {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 13px;
+}
+
+.patient-image h2 {
+    margin: 18px 0 8px;
+    color: #174b45;
+    font-size: 25px;
+}
+
+.patient-image p {
+    color: #526b65;
+    line-height: 1.7;
+    margin-bottom: 5px;
+}
+
+.patient-layout .form-container {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.patient-layout .form-container form {
+    width: 100%;
+}
+
+@media (max-width: 760px) {
+    .patient-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        margin-top: 20px;
+    }
+
+    .patient-image img {
+        height: 220px;
+    }
+
+    .patient-image h2 {
+        font-size: 22px;
+    }
+}
+
+/* Patient Care Brand */
+.brand-name {
+    color: #176b5b;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.brand-tagline {
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* Success and Error Messages */
+.status-message {
+    display: none;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    animation: slideIn 0.4s ease;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+.status-message.success {
+    display: block;
+    background: #e8f8ef;
+    color: #176b45;
+    border: 1px solid #a7e5bd;
+}
+
+.status-message.error {
+    display: block;
+    background: #fff0f0;
+    color: #b42318;
+    border: 1px solid #ffcaca;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer Branding */
+.patient-footer {
+    margin-top: 40px;
+    padding: 22px;
+    background: #123f3a;
+    color: white;
+    text-align: center;
+}
+
+.patient-footer strong {
+    color: #f4d58d;
+}

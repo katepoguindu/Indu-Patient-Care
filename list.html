@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Records | Indu PatientCare</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .record-info {
+            width: 90%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .record-count {
+            background: #DCE8DF;
+            color: #123D35;
+            padding: 10px 16px;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+
+        .search-box {
+            padding: 11px 14px;
+            border: 1px solid #C6A66B;
+            border-radius: 5px;
+            max-width: 300px;
+            width: 100%;
+            font: inherit;
+        }
+
+        .status-message {
+            text-align: center;
+            padding: 20px;
+            color: #6F7E77;
+        }
+
+        .table-container {
+            margin-top: 15px;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 25px;
+        }
+    </style>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">✚ Indu Patient Care</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="insert.html">Add Patient</a>
+        <a href="list.html">View Patients</a>
+        <a href="update.html">Update</a>
+        <a href="delete.html">Delete</a>
+    </nav>
+</header>
+
+<div class="patient-list-banner">
+    <img src="images/reception.jpg"
+         alt="Hospital patient records and reception">
+    <div class="patient-list-banner-text">
+        <p class="eyebrow">PATIENT RECORDS</p>
+        <h2>View All Patients</h2>
+        <p>Access and manage patient information in one place.</p>
+    </div>
+</div>
+
+
+<section class="page-heading">
+    <p class="eyebrow">PATIENT DATABASE</p>
+    <h1 class="page-title">Patient Records</h1>
+    <p>View and search registered patient information.</p>
+</section>
+
+<div class="record-info">
+    <div class="record-count">
+        Total Patients: <span id="totalCount">0</span>
+    </div>
+
+    <input
+        type="search"
+        id="searchInput"
+        class="search-box"
+        placeholder="Search patients..."
+        aria-label="Search patients">
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Patient ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Problem</th>
+            </tr>
+        </thead>
+        <tbody id="patientTable">
+            <tr>
+                <td colspan="7" class="status-message">
+                    Loading patient records...
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <p>© 2026 PatientCare Management System | Care Begins Here</p>
+</footer>
+
+<script>
+    let patients = [];
+
+    const table = document.getElementById("patientTable");
+    const count = document.getElementById("totalCount");
+    const searchInput = document.getElementById("searchInput");
+
+    function renderPatients() {
+        const search = searchInput.value.toLowerCase().trim();
+
+        const filtered = patients.filter(patient =>
+            [
+                patient.patient_id,
+                patient.name,
+                patient.email,
+                patient.phone,
+                patient.gender,
+                patient.age,
+                patient.problem
+            ].some(value =>
+                String(value).toLowerCase().includes(search)
+            )
+        );
+
+        count.textContent = patients.length;
+
+        if (filtered.length === 0) {
+            table.innerHTML = `
+                <tr>
+                    <td colspan="7" class="empty-message">
+                        No patient records found.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        table.innerHTML = filtered.map(patient => `
+            <tr>
+                <td>${patient.patient_id}</td>
+                <td>${escapeHTML(patient.name)}</td>
+                <td>${escapeHTML(patient.email)}</td>
+                <td>${escapeHTML(patient.phone)}</td>
+                <td>${escapeHTML(patient.gender)}</td>
+                <td>${patient.age}</td>
+                <td>${escapeHTML(patient.problem)}</td>
+            </tr>
+        `).join("");
+    }
+
+    function escapeHTML(value) {
+        return String(value).replace(/[&<>"']/g, char => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[char]);
+    }
+
+    async function loadPatients() {
+        try {
+            const response = await fetch("/patients");
+
+            if (!response.ok) {
+                throw new Error("Could not load patient records");
+            }
+
+            patients = await response.json();
+            renderPatients();
+        } catch (error) {
+            table.innerHTML = `
+                <tr>
+                    <td colspan="7" class="empty-message">
+                        Unable to load records. Please check the server.
+                    </td>
+                </tr>
+            `;
+            console.error(error);
+        }
+    }
+
+    searchInput.addEventListener("input", renderPatients);
+
+    loadPatients();
+</script>
+
+</body>
+</html>
